@@ -31,6 +31,7 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self._check_events()
+            self.ship.update()
             self._update_screen()
             # Watch for keyboard and mouse events
 
@@ -41,8 +42,20 @@ class AlienInvasion:
             # Any keyboard or mouse event will cause the for loop to run
             if event.type == pygame.QUIT:  # if player clicks the close window the game will exit
                 sys.exit()  # call this to end the game
+            elif event.type == pygame.KEYDOWN:  # Key down - The key will move in a fluid motion continuously in the
+                # on direction
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = True
+                elif event.key == pygame.K_LEFT:
+                    self.ship.moving_left = True
 
-        # Redraw the screen during each pass through the loop.
+            elif event.type == pygame.KEYUP:  # Key up - The ship will be motionless when key is up
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+                elif event.key == pygame.K_LEFT:
+                    self.ship.moving_left = False
+
+                    # Redraw the screen during each pass through the loop.
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)

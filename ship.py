@@ -16,6 +16,18 @@ class Ship:  # Create a new module for ship that will allow us to manage the beh
         self.rect.midbottom = self.screen_rect.midbottom  # position the ship at the bottom center of the screen
         # when working with rect object you can use the x and y coordinates of the top,bottom, left or right
 
+        #Movement flag
+        self.moving_right = False # add the self.moving_right and set it false
+        self.moving_left = False # movement flag when it is false the ship will me motion less
+
+    def update(self):
+        """Update the ship's position based on the movement flag."""
+        if self.moving_right: # Initially at False then moves to True when right key is pressed
+            self.rect.x += 1 # Moves to the right one increment
+        if self.moving_left: # Initially at False then moves to True when right key is pressed
+            self.rect.x -= 1 # Moves to the left one increment negatively
+
+
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
