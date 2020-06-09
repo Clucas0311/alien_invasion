@@ -10,14 +10,15 @@ class AlienInvasion:
     """Overall class to manage game assets and behavior."""
 
     def __init__(self):
-        """Initialize the game, and create game resources."""
+        """Intialize the game, and create game resources."""
         pygame.init()  # Initializes the background settings
         self.settings = Settings()  # Created an instance of settings and set it equal to self.setting
 
         self.screen = pygame.display.set_mode((self.settings.screen_width,
                                                self.settings.screen_height))
 
-        self.screen = pygame.display.set_mode((1200, 600))  # create a game window 1200 wide and 800 high
+        # create a game window 1200 wide and 800 high
+        self.screen = pygame.display.set_mode((1200, 600))
         # assign it to self.screen attribute so we can use it as a method later
         pygame.display.set_caption("Alien Invasion")  # Adds title
 
@@ -29,11 +30,12 @@ class AlienInvasion:
     def run_game(self):
         """Start the main loop for the game."""
         while True:
-            self._check_events() # Created two helper methods
-            self._update_screen() # Created two helper methods
-            # Redraw the screen during each pass through the loop.
+            self._check_events()
+            self._update_screen()
             # Watch for keyboard and mouse events
+
     def _check_events(self):
+        """Respond to key presses and mouse events"""
         for event in pygame.event.get():  # an event is an action that
             # the user performs while playing the game such as a key or moving a mouse
             # Any keyboard or mouse event will cause the for loop to run
@@ -41,11 +43,12 @@ class AlienInvasion:
                 sys.exit()  # call this to end the game
 
         # Redraw the screen during each pass through the loop.
+
     def _update_screen(self):
-        # Redraw the screen during each pass through the loop.
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()  # draw the ship on the screen
-    # Make the most recently drawn screen visible
+        # Make the most recently drawn screen visible
+
         pygame.display.flip()  # Shows the new position/display of the screen - shows smooth movement
 
 
