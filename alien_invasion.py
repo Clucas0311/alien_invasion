@@ -15,7 +15,6 @@ class AlienInvasion:
         pygame.init()  # Initializes the background settings
         self.settings = Settings()  # Created an instance of settings and set it equal to self.setting
 
-
         self.screen = pygame.display.set_mode((self.settings.screen_width,
                                                self.settings.screen_height))
         # Tells pygame to figure out a window size that will fill the screen
@@ -30,20 +29,23 @@ class AlienInvasion:
         self.bg_color = (230, 230, 230)  # Colors are RGB mix of red green and blue
         # Equal amounts of all colors produce a gray background
 
-
     def run_game(self):
         """Start the main loop for the game."""
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
-            # Watch for keyboard and mouse events
+
+    def _update_bullets(self):
+        """Update the position of the bullets and get rid of old bullets."""
+        # Update bullet positions
+        self.bullets.update()
 
         # Get rid of bullets that have disappeared.
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
 
 
     def _check_events(self):
@@ -84,6 +86,10 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+
+
+
+
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
