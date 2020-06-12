@@ -44,16 +44,16 @@ class AlienInvasion:
                 sys.exit()  # call this to end the game
             elif event.type == pygame.KEYDOWN:  # Key down - The key will move in a fluid motion continuously in the
                 # on direction
-                if event.key == pygame.K_RIGHT:
-                    self.ship.moving_right = True
-                elif event.key == pygame.K_LEFT:
+                if event.key == pygame.K_RIGHT:  # if the key press down is the right key
+                    self.ship.moving_right = True  # this checks if its true for right key being pressed down
+                elif event.key == pygame.K_LEFT:  # if the left key is pressed
                     self.ship.moving_left = True
 
             elif event.type == pygame.KEYUP:  # Key up - The ship will be motionless when key is up
-                if event.key == pygame.K_RIGHT:
-                    self.ship.moving_right = False
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = False
+                if event.key == pygame.K_RIGHT: # if right key is released
+                    self.ship.moving_right = False # The ship will be back to false
+                elif event.key == pygame.K_LEFT: # if left key is pressed
+                    self.ship.moving_left = False # the ship will be motionless set to False position
 
                     # Redraw the screen during each pass through the loop.
 
