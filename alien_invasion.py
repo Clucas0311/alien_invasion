@@ -16,10 +16,10 @@ class AlienInvasion:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width,
                                                self.settings.screen_height))
-
-        # create a game window 1200 wide and 800 high
-        self.screen = pygame.display.set_mode((1200, 600))
-        # assign it to self.screen attribute so we can use it as a method later
+        # Tells pygame to figure out a window size that will fill the screen
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.settings.screen_width = self.screen.get_rect().width # update the screen width
+        self.settings.screen_height = self.screen.get_rect().height # updates the screen's height
         pygame.display.set_caption("Alien Invasion")  # Adds title
 
         self.ship = Ship(self)  # Create an instance for the ship
