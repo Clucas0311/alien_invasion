@@ -26,10 +26,11 @@ class Ship:  # Create a new module for ship that will allow us to manage the beh
 
     def update(self):
         """Update the ship's position based on the movement flag."""
-        # Initially at False then moves to True when right key is pressed
+        # Creates boundaries for the ship, self.rect.right returns the x coordinate of the right edge of the ships rect
+        # if the value is less than the value returned by self.screen_rect right the ship hasn't reached the right edge
+        # of the screen
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed  # Moves to the right one increment
-
         if self.moving_left and self.rect.left > 0:  # Initially at False then moves to True when right key is pressed
             self.x -= self.settings.ship_speed  # Moves to the left one increment negatively
 
